@@ -1,0 +1,413 @@
+/* Reset default margin and padding */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
+html {
+    overflow-y: hidden;
+    /* Prevent scrollbar flash */
+}
+
+.home-page {
+    width: 100%;
+}
+
+/* Full width container for hero section */
+.full-width-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: calc(100vh + 2px);
+    /* Extends 2px beyond viewport */
+    overflow: hidden;
+    /* Hides the extra 2px without scrolling */
+}
+
+/* Inside your Home.css or a global CSS file */
+
+.featured-destinations .destination-card .destination-content h3 {
+    color: #333;
+    /* Dark gray or black color */
+    /* You might want to remove or adjust other text-shadow properties if they are inherited and interfere */
+}
+
+/* Content container with max-width */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: auto;
+
+    /* Enable scrolling for content */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Maintains aspect ratio while covering area */
+    z-index: -1;
+}
+
+.hero-content {
+
+    z-index: 1;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.search-box button {
+    padding: 12px 30px;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #e04848;
+}
+
+/* Popular Destinations */
+.popular-destinations {
+    padding: 40px 20px;
+}
+
+.popular-destinations h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Special Deals */
+.special-deals {
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.special-deals h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.deals-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 40px 20px;
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.testimonial-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial .author {
+    font-weight: bold;
+    text-align: right;
+    color: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .search-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box input {
+        width: 80%;
+    }
+}
+
+.search-bar-enhanced {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #ffb347 0%, #ff5e62 100%);
+    padding: 36px 0 28px 0;
+    margin-top: -40px;
+    margin-bottom: 40px;
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 8px 32px rgba(255, 94, 98, 0.15);
+    z-index: 2;
+    position: relative;
+}
+
+.search-bar-enhanced .search-form {
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-bar-enhanced .search-input {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 5px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar-enhanced .search-input input {
+    flex: 1;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+.search-bar-enhanced .search-input button {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.search-bar-enhanced .search-input button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+@media (max-width: 768px) {
+    .search-bar-enhanced {
+        margin-top: -20px;
+        margin-bottom: 25px;
+        border-radius: 0 0 18px 18px;
+        padding: 20px 0 16px 0;
+    }
+}
+
+/* Enhanced Search Section Styles */
+.search-section {
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.95), rgba(52, 73, 94, 0.95));
+    padding: 2.5rem 0;
+    margin: 2rem auto;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    max-width: 1000px;
+    width: 90%;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.search-input-wrapper {
+    display: flex;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-input-wrapper:focus-within {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1rem 1.5rem;
+    color: #fff;
+    font-size: 1.1rem;
+    outline: none;
+    border-radius: 25px;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #ffed4a, #ffd700);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+.search-icon {
+    font-size: 1.2rem;
+}
+
+.search-text {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive styles for search section */
+@media (max-width: 768px) {
+    .search-section {
+        padding: 1.5rem 0;
+        margin: 1.5rem auto;
+        width: 95%;
+    }
+
+    .search-input-wrapper {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.8rem;
+        border-radius: 15px;
+    }
+
+    .search-input {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+
+    .search-button {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem;
+    }
+}

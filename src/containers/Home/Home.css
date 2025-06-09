@@ -1,0 +1,443 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Home Page Container */
+.home-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Full Width Container (for hero section) */
+.full-width-container {
+    width: 100%;
+    /* No max-width here, spans full screen */
+}
+
+/* Content Container (for sections below hero) */
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    /* Adjust as needed */
+    margin: 0 auto;
+    /* Center the content */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Include padding in width */
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.6);
+    /* Darken video for text readability */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Search Box */
+.search-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 5px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-input input {
+    flex: 1;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+.search-input button {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.search-input button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.search-results {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-results h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #2c3e50;
+}
+
+.no-results h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.popular-destinations,
+.special-deals {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.popular-destinations h2,
+.special-deals h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.destination-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #e74c3c;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #f1c40f;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.book-now-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.book-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Section Headings */
+section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin: 60px 0 40px 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd700;
+    border-radius: 2px;
+}
+
+/* Destination Grids (reused for popular and explore places) */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Responsive grid */
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Special Deals Container */
+.deals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Testimonials Section */
+.testimonials {
+    margin-top: 80px;
+    padding-bottom: 60px;
+}
+
+.testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.testimonial {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    max-width: 450px;
+    text-align: center;
+    flex: 1;
+    min-width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.testimonial .author {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+/* Specific styling for destination card titles on Home page to be black */
+/* This overrides any default DestinationCard styles if they set a different color */
+.popular-destinations .destination-card .destination-content h3,
+.special-deals .destination-card .destination-content h3,
+.explore-places .destination-card .destination-content h3 {
+    color: #333;
+    /* Dark gray, appears black. Use #000 for pure black if preferred. */
+    /* If you had text-shadow here previously and want to remove it for black text, you can add: */
+    /* text-shadow: none; */
+}
+
+.search-bar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;
+    margin-bottom: 40px;
+    z-index: 2;
+    position: relative;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .content-container {
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.4rem;
+    }
+
+    .search-input {
+        padding: 20px 25px;
+    }
+
+    .search-input input,
+    .search-input button {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    section h2 {
+        font-size: 2.2rem;
+        margin: 50px 0 30px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 500px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .search-input {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .search-input input,
+    .search-input button {
+        border-radius: 10px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        margin: 40px 0 25px 0;
+    }
+
+    .destinations-grid,
+    .deals-container,
+    .testimonial-cards {
+        grid-template-columns: 1fr;
+        /* Single column on small screens */
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .search-bar-container {
+        margin-top: -20px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 400px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .search-input {
+        padding: 15px;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+}

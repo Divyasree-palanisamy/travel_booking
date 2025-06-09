@@ -1,0 +1,209 @@
+/* General Body and Page Setup for a Modern Look */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Using a modern font */
+    background-color: #1a1a2e;
+    /* Darker background to make transparency pop */
+    color: #e0e0e0;
+    /* Default text color for the page */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
+/* Page Container - This will get the main transparent effect */
+.search-results-page {
+    padding: 100px 20px;
+    /* Adjust padding for fixed elements like a navbar */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align to top, not center vertically */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+    background: linear-gradient(135deg, #2a0a4c, #0a0a2e);
+    /* Subtle gradient background */
+}
+
+.search-results-container {
+    max-width: 1200px;
+    width: 100%;
+    /* Ensure it takes full width up to max-width */
+    margin: 0 auto;
+
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.08);
+    /* Very transparent white */
+    backdrop-filter: blur(15px);
+    /* Stronger blur for more prominent effect */
+    -webkit-backdrop-filter: blur(15px);
+    /* For Safari support */
+    border-radius: 20px;
+    /* More rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Lighter, subtle border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow */
+
+    padding: 40px;
+    /* Increased padding */
+    transition: all 0.5s ease-in-out;
+    /* Smooth transition for any future changes */
+}
+
+.search-results-container:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    /* Slightly more prominent shadow on hover */
+}
+
+/* Headings */
+.search-results-container h2 {
+    text-align: center;
+    color: #e6e6e6;
+    /* Light grey for headings */
+    margin-bottom: 35px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background: -webkit-linear-gradient(45deg, #ffc700, #ff8c00);
+    /* Golden gradient for title */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Search Parameters Section */
+.search-parameters {
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Transparent border */
+    color: #c9c9c9;
+    /* Lighter text for parameters */
+}
+
+.search-parameters h3 {
+    color: #ffc700;
+    /* Golden color for sub-heading */
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.search-parameters ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-parameters li {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Very light transparent background for tags */
+    padding: 10px 20px;
+    border-radius: 8px;
+    /* Slightly more rounded */
+    font-size: 1rem;
+    color: #ffffff;
+    /* White text for parameter values */
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-parameters li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Results List */
+.results-list h3 {
+    color: #ffc700;
+    /* Golden color for sub-heading */
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.results-list p {
+    text-align: center;
+    color: #c9c9c9;
+    /* Lighter text for no results message */
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* Reusing grid style from Home or general styles */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    /* Increased gap */
+    margin-bottom: 40px;
+    justify-items: center;
+    /* Center cards in grid cells */
+}
+
+/* Placeholder card for loading (if used) */
+.placeholder-result-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    color: #c9c9c9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.placeholder-result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.placeholder-result-card h4 {
+    margin-top: 0;
+    color: #ffc700;
+}
+
+.placeholder-result-card p {
+    color: #c9c9c9;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-results-page {
+        padding: 80px 15px;
+    }
+
+    .search-results-container {
+        padding: 25px;
+    }
+
+    .search-results-container h2 {
+        font-size: 2rem;
+    }
+
+    .search-parameters h3,
+    .results-list h3 {
+        font-size: 1.4rem;
+    }
+
+    .search-parameters ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .destinations-grid {
+        grid-template-columns: 1fr;
+        /* Single column on small screens */
+        gap: 25px;
+    }
+}
