@@ -264,6 +264,28 @@ const Booking = () => {
                 'Relax at Bondi Beach',
                 'Stroll through the Royal Botanic Garden'
             ]
+        },
+        {
+            id: 12,
+            title: 'Great Wall of China, China',
+            image: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d',
+            price: 1899,
+            rating: 4.9,
+            description: 'Walk along one of the world\'s most impressive architectural wonders. Experience the ancient marvel that spans thousands of miles across China\'s northern landscape.',
+            location: 'Great Wall of China, China',
+            duration: '5 days',
+            features: [
+                { icon: '🏛️', text: 'Historic Tour' },
+                { icon: '⛰️', text: 'Mountain Views' },
+                { icon: '📸', text: 'Photo Spots' },
+                { icon: '🏃', text: 'Hiking Trails' }
+            ],
+            highlights: [
+                'Guided tour of the Great Wall',
+                'Visit the Mutianyu section',
+                'Experience local culture',
+                'Enjoy panoramic views'
+            ]
         }
     ];
 
@@ -271,9 +293,17 @@ const Booking = () => {
         // Find destination by first word of title
         const foundDestination = destinations.find(dest => {
             const destFirstWord = dest.title.split(',')[0].toLowerCase().trim();
-            return destFirstWord === destinationName;
+            const searchName = destinationName.toLowerCase().trim();
+            return destFirstWord === searchName;
         });
-        setDestination(foundDestination);
+
+        if (foundDestination) {
+            setDestination(foundDestination);
+        } else {
+            console.error('Destination not found:', destinationName);
+            // Optionally redirect to home if destination not found
+            // navigate('/');
+        }
         setLoading(false);
     }, [destinationName]);
 

@@ -120,8 +120,14 @@ const Destinations = () => {
       rating: 4.6,
       image: newYorkImage,
       trending: true
+    },
+    {
+      id: 12,
+      title: 'Great Wall of China, China',
+      description: 'Walk along one of the world\'s most impressive architectural wonders.',
+      price: 1899,
+      image: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d'
     }
-
   ];
 
   // Display only first 3 destinations initially

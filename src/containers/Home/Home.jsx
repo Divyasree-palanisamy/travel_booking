@@ -91,6 +91,33 @@ const Home = () => {
             rating: 4.2,
             image: familyDealImg,
             category: 'Deals'
+        },
+        {
+            id: 8,
+            title: 'Great Wall of China',
+            description: 'Experience the ancient wonder of the world with breathtaking views.',
+            price: 1800,
+            rating: 4.9,
+            image: dubaiImg, // Using dubai image as placeholder
+            category: 'Explore'
+        },
+        {
+            id: 9,
+            title: 'Machu Picchu',
+            description: 'Discover the mysterious Incan citadel in the Andes Mountains.',
+            price: 1500,
+            rating: 4.7,
+            image: machuPicchuImg,
+            category: 'Explore'
+        },
+        {
+            id: 10,
+            title: 'Santorini, Greece',
+            description: 'Stunning sunsets and white-washed buildings in the Aegean Sea.',
+            price: 1700,
+            rating: 4.8,
+            image: santoriniImg,
+            category: 'Explore'
         }
     ];
 
@@ -107,7 +134,13 @@ const Home = () => {
     };
 
     const handleBooking = (destinationId) => {
-        navigate(`/booking/${destinationId}`);
+        console.log('Booking clicked for destination ID:', destinationId);
+        const destination = allDestinations.find(dest => dest.id === destinationId);
+        console.log('Destination details:', destination);
+        // Get only the part before the comma
+        const destinationName = destination.title.split(',')[0].trim();
+        const encodedTitle = encodeURIComponent(destinationName);
+        navigate(`/book/${encodedTitle}`);
     };
 
     return (
@@ -200,6 +233,33 @@ const Home = () => {
                         <div className="destination-grid">
                             {allDestinations
                                 .filter(dest => dest.category === 'Deals')
+                                .map(destination => (
+                                    <div key={destination.id} className="destination-card">
+                                        <img src={destination.image} alt={destination.title} />
+                                        <div className="card-content">
+                                            <h3>{destination.title}</h3>
+                                            <div className="price">${destination.price}</div>
+                                            <div className="rating">
+                                                <FaStar /> {destination.rating}
+                                            </div>
+                                            <p>{destination.description}</p>
+                                            <button
+                                                className="book-now-btn"
+                                                onClick={() => handleBooking(destination.id)}
+                                            >
+                                                Book Now
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    </section>
+
+                    <section className="explore-more">
+                        <h2>Explore More Places</h2>
+                        <div className="destination-grid">
+                            {allDestinations
+                                .filter(dest => dest.category === 'Explore')
                                 .map(destination => (
                                     <div key={destination.id} className="destination-card">
                                         <img src={destination.image} alt={destination.title} />
