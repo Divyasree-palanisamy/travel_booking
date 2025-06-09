@@ -148,7 +148,7 @@ const Home = () => {
             <div className="hero-section">
                 <video src={travelBgVideo} autoPlay loop muted className="hero-video" />
                 <div className="hero-content">
-                    <h1>Discover Your Perfect Getaway</h1>
+                    <h1>Discover Your <span>Perfect Getaway</span></h1>
                     <p>Book unforgettable experiences at the best prices</p>
                 </div>
             </div>
