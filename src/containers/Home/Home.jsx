@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaStar } from 'react-icons/fa';
 import './Home.css';
-// Assuming 'images' is a centralized file with all your image imports
-// import images from '../../constants/images'; // If you're using a centralized 'images' file
 import travelBgVideo from '../../assets/videos/travel-bg.mp4'; // Direct import for video
 
 // Make sure these paths are correct for your image assets
@@ -37,7 +35,7 @@ const Home = () => {
             description: 'The island of gods with beautiful beaches and rich culture.',
             price: 1200,
             rating: 4.8,
-            image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4',
+            image: baliImg,
             category: 'Popular'
         },
         {
@@ -46,7 +44,7 @@ const Home = () => {
             description: 'The city of love, lights, and timeless romance.',
             price: 1400,
             rating: 4.7,
-            image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34',
+            image: parisImg,
             category: 'Popular'
         },
         {
@@ -55,7 +53,7 @@ const Home = () => {
             description: 'Where tradition seamlessly blends with cutting-edge technology.',
             price: 1600,
             rating: 4.8,
-            image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf',
+            image: tokyoImg,
             category: 'Popular'
         },
         {
@@ -64,7 +62,7 @@ const Home = () => {
             description: 'The city that never sleeps, with iconic landmarks.',
             price: 1600,
             rating: 4.6,
-            image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9',
+            image: newyorkImg,
             category: 'Popular'
         },
         {
@@ -73,7 +71,7 @@ const Home = () => {
             description: 'Grab hot deals for your summer vacation.',
             price: 999,
             rating: 4.5,
-            image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
+            image: summerDealImg,
             category: 'Deals'
         },
         {
@@ -82,7 +80,7 @@ const Home = () => {
             description: 'Book early and save big on your next adventure.',
             price: 799,
             rating: 4.3,
-            image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1',
+            image: earlyBirdDealImg,
             category: 'Deals'
         },
         {
@@ -91,7 +89,7 @@ const Home = () => {
             description: 'Perfect short escapes for a refreshing break.',
             price: 599,
             rating: 4.2,
-            image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
+            image: familyDealImg,
             category: 'Deals'
         }
     ];
@@ -115,6 +113,7 @@ const Home = () => {
     return (
         <div className="home">
             <div className="hero-section">
+                <video src={travelBgVideo} autoPlay loop muted className="hero-video" />
                 <div className="hero-content">
                     <h1>Discover Your Perfect Getaway</h1>
                     <p>Book unforgettable experiences at the best prices</p>
