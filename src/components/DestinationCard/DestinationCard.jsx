@@ -6,9 +6,13 @@ const DestinationCard = ({ destination }) => {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    // Get only the first word of the title and convert to lowercase
-    const firstWord = destination.title.split(',')[0].toLowerCase().trim();
-    navigate(`/book/${firstWord}`);
+    console.log('Book Now clicked:', destination);
+    if (destination.title === 'Summer Special') {
+      navigate('/summer-special');
+    } else {
+      const firstWord = destination.title.split(',')[0].toLowerCase().trim();
+      navigate(`/book/${firstWord}`);
+    }
   };
 
   return (
