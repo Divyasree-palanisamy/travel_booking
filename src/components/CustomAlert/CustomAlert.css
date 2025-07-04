@@ -25,6 +25,7 @@
 
 .custom-alert.success {
     border-top: 4px solid #2ecc71;
+    box-shadow: 0 0 16px 2px #2ecc7133, 0 10px 32px 0 rgba(44, 62, 80, 0.18);
 }
 
 .custom-alert.error {

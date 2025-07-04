@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import summerDealImg from '../../src/assets/images/summer-deal.jpeg';
-import baliImg from '../../src/assets/images/bali.jpeg';
-import santoriniImg from '../../src/assets/images/santorini.jpeg';
-import maldivesImg from '../../src/assets/images/maldives.jpg';
+import earlyBirdDealImg from '../assets/images/early-bird-deal.jpeg';
+import parisImg from '../assets/images/paris.jpg';
+import tokyoImg from '../assets/images/tokyo.jpg';
+import baliImg from '../assets/images/bali.jpeg';
 import DestinationCard from '../components/DestinationCard/DestinationCard';
 
-const summerDeals = [
+const earlyBirdPlaces = [
+    {
+        title: 'Paris, France',
+        image: parisImg,
+        price: 1200,
+        description: 'The city of love, lights, and timeless romance.'
+    },
+    {
+        title: 'Tokyo, Japan',
+        image: tokyoImg,
+        price: 1600,
+        description: 'Where tradition seamlessly blends with cutting-edge technology.'
+    },
     {
         title: 'Bali, Indonesia',
         image: baliImg,
         price: 999,
-        description: 'Experience the magic of Bali with our exclusive summer offer!'
-    },
-    {
-        title: 'Santorini, Greece',
-        image: santoriniImg,
-        price: 1199,
-        description: 'Enjoy breathtaking sunsets and whitewashed villages this summer.'
-    },
-    {
-        title: 'Maldives',
-        image: maldivesImg,
-        price: 1399,
-        description: 'Relax on pristine beaches and swim in crystal-clear waters.'
+        description: 'The island of gods with beautiful beaches and rich culture.'
     }
 ];
 
@@ -42,8 +42,8 @@ const heroSectionStyle = {
 };
 
 const heroImgStyle = {
-    width: '340px',
-    maxWidth: '90vw',
+    width: '260px',
+    maxWidth: '80vw',
     height: 'auto',
     borderRadius: '18px',
     boxShadow: '0 2px 8px rgba(67,198,172,0.08)',
@@ -79,17 +79,16 @@ const cardHoverStyle = {
     transform: 'scale(1.035)',
 };
 
-const SummerSpecial = () => {
+const EarlyBirdDestinations = () => {
     const navigate = useNavigate();
     const [hoveredIdx, setHoveredIdx] = useState(-1);
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
     }, []);
 
-    const handleBookNow = (deal) => {
-        // Use the first word before comma, lowercased, as in Booking.jsx
-        const destinationName = deal.title.split(',')[0].toLowerCase().trim();
+    const handleBookNow = (place) => {
+        const destinationName = place.title.split(',')[0].toLowerCase().trim();
         navigate(`/book/${destinationName}`);
     };
 
@@ -98,29 +97,33 @@ const SummerSpecial = () => {
             {/* Hero Section: Image left, text right */}
             <div style={heroSectionStyle}>
                 <img
-                    src={summerDealImg}
-                    alt="Summer Special Banner"
+                    src={earlyBirdDealImg}
+                    alt="Early Bird Banner"
                     style={heroImgStyle}
                 />
                 <div style={heroTextStyle}>
-                    <h1 style={{ fontSize: '2.5rem', marginBottom: '0.7rem', color: '#2c3e50', fontWeight: 700, letterSpacing: '1px' }}>Summer Special Deals</h1>
-                    <p style={{ fontSize: '1.2rem', color: '#333', maxWidth: '600px', marginBottom: 0 }}>
-                        Enjoy exclusive summer deals on your favorite destinations! Book now and save big on your next adventure.
+                    <h1 style={{ fontSize: '2.1rem', marginBottom: '0.5rem', color: '#2c3e50', fontWeight: 700, letterSpacing: '1px' }}>Early Bird Destinations</h1>
+                    <p style={{ fontSize: '1.08rem', color: '#333', maxWidth: '600px', marginBottom: 0 }}>
+                        Book early and save big on these exclusive destinations! Choose your favorite and enjoy special discounts.
                     </p>
                 </div>
             </div>
             {/* Deals Cards Section */}
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem 3rem 1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2.5rem', marginBottom: '2.5rem' }}>
-                    {summerDeals.map((deal, idx) => (
-                        <DestinationCard key={idx} destination={{ ...deal, rating: 4.7 }} buttonStyle={{
-                            background: 'linear-gradient(135deg, #43c6ac, #191654)',
-                            color: '#fff',
-                            width: 'auto',
-                            maxWidth: '180px',
-                            display: 'block',
-                            margin: '18px auto 0 auto',
-                        }} />
+                    {earlyBirdPlaces.map((place, idx) => (
+                        <DestinationCard
+                            key={idx}
+                            destination={{ ...place, rating: 4.7 }}
+                            buttonStyle={{
+                                background: 'linear-gradient(135deg, #43c6ac, #191654)',
+                                color: '#fff',
+                                width: 'auto',
+                                maxWidth: '180px',
+                                display: 'block',
+                                margin: '18px auto 0 auto',
+                            }}
+                        />
                     ))}
                 </div>
             </div>
@@ -128,4 +131,4 @@ const SummerSpecial = () => {
     );
 };
 
-export default SummerSpecial; 
+export default EarlyBirdDestinations; 

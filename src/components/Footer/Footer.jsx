@@ -20,24 +20,24 @@ const Footer = () => {
   const [isSubscribing, setIsSubscribing] = useState(false);
 
   const quickLinks = [
-    { name: 'About Us', path: '/about', action: () => navigate('/about') },
-    { name: 'Our Services', path: '/services', action: () => navigate('/services') },
-    { name: 'Privacy Policy', path: '/privacy', action: () => navigate('/privacy') },
-    { name: 'Affiliate Program', path: '/affiliate', action: () => navigate('/affiliate') }
+    { name: 'About Us', path: '/about', action: () => toast.info('About Us page coming soon!') },
+    { name: 'Our Services', path: '/services', action: () => toast.info('Services page coming soon!') },
+    { name: 'Privacy Policy', path: '/privacy', action: () => toast.info('Privacy Policy page coming soon!') },
+    { name: 'Affiliate Program', path: '/affiliate', action: () => toast.info('Affiliate Program page coming soon!') }
   ];
 
   const helpLinks = [
-    { name: 'FAQ', path: '/faq', action: () => navigate('/faq') },
-    { name: 'Booking', path: '/booking', action: () => navigate('/booking') },
-    { name: 'Returns', path: '/returns', action: () => navigate('/returns') },
-    { name: 'Payment Options', path: '/payment', action: () => navigate('/payment') }
+    { name: 'FAQ', path: '/faq', action: () => toast.info('FAQ page coming soon!') },
+    { name: 'Booking', path: '/booking', action: () => navigate('/') },
+    { name: 'Returns', path: '/returns', action: () => toast.info('Returns page coming soon!') },
+    { name: 'Payment Options', path: '/payment', action: () => toast.info('Payment Options page coming soon!') }
   ];
 
   const destinations = [
-    { name: 'Beach Destinations', path: '/destinations/beach', action: () => navigate('/destinations/beach') },
-    { name: 'Mountain Escapes', path: '/destinations/mountain', action: () => navigate('/destinations/mountain') },
-    { name: 'City Tours', path: '/destinations/city', action: () => navigate('/destinations/city') },
-    { name: 'Adventure Trips', path: '/destinations/adventure', action: () => navigate('/destinations/adventure') }
+    { name: 'Beach Destinations', path: '/destinations/beach', action: () => navigate('/destinations') },
+    { name: 'Mountain Escapes', path: '/destinations/mountain', action: () => navigate('/destinations') },
+    { name: 'City Tours', path: '/destinations/city', action: () => navigate('/destinations') },
+    { name: 'Adventure Trips', path: '/destinations/adventure', action: () => navigate('/destinations') }
   ];
 
   const socialLinks = [

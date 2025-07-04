@@ -174,23 +174,10 @@ const Home = () => {
                     <h2>Search Results</h2>
                     <div className="destination-grid">
                         {searchResults.map(destination => (
-                            <div key={destination.id} className="destination-card">
-                                <img src={destination.image} alt={destination.title} />
-                                <div className="card-content">
-                                    <h3>{destination.title}</h3>
-                                    <div className="price">${destination.price}</div>
-                                    <div className="rating">
-                                        <FaStar /> {destination.rating}
-                                    </div>
-                                    <p>{destination.description}</p>
-                                    <button
-                                        className="book-now-btn"
-                                        onClick={() => handleBooking(destination.id)}
-                                    >
-                                        Book Now
-                                    </button>
-                                </div>
-                            </div>
+                            <DestinationCard
+                                key={destination.id}
+                                destination={destination}
+                            />
                         ))}
                     </div>
                 </div>
@@ -207,23 +194,10 @@ const Home = () => {
                             {allDestinations
                                 .filter(dest => dest.category === 'Popular')
                                 .map(destination => (
-                                    <div key={destination.id} className="destination-card">
-                                        <img src={destination.image} alt={destination.title} />
-                                        <div className="card-content">
-                                            <h3>{destination.title}</h3>
-                                            <div className="price">${destination.price}</div>
-                                            <div className="rating">
-                                                <FaStar /> {destination.rating}
-                                            </div>
-                                            <p>{destination.description}</p>
-                                            <button
-                                                className="book-now-btn"
-                                                onClick={() => handleBooking(destination.id)}
-                                            >
-                                                Book Now
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <DestinationCard
+                                        key={destination.id}
+                                        destination={destination}
+                                    />
                                 ))}
                         </div>
                     </section>
@@ -245,7 +219,15 @@ const Home = () => {
                                             <p>{destination.description}</p>
                                             <button
                                                 className="book-now-btn"
-                                                onClick={() => handleBooking(destination.id)}
+                                                onClick={() => {
+                                                    if (destination.title === 'Early Bird') {
+                                                        navigate('/early-bird');
+                                                    } else {
+                                                        const destinationName = destination.title.split(',')[0].trim();
+                                                        const encodedTitle = encodeURIComponent(destinationName);
+                                                        navigate(`/book/${encodedTitle}`);
+                                                    }
+                                                }}
                                             >
                                                 Book Now
                                             </button>
@@ -261,23 +243,10 @@ const Home = () => {
                             {allDestinations
                                 .filter(dest => dest.category === 'Explore')
                                 .map(destination => (
-                                    <div key={destination.id} className="destination-card">
-                                        <img src={destination.image} alt={destination.title} />
-                                        <div className="card-content">
-                                            <h3>{destination.title}</h3>
-                                            <div className="price">${destination.price}</div>
-                                            <div className="rating">
-                                                <FaStar /> {destination.rating}
-                                            </div>
-                                            <p>{destination.description}</p>
-                                            <button
-                                                className="book-now-btn"
-                                                onClick={() => handleBooking(destination.id)}
-                                            >
-                                                Book Now
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <DestinationCard
+                                        key={destination.id}
+                                        destination={destination}
+                                    />
                                 ))}
                         </div>
                     </section>

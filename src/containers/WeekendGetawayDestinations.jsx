@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import summerDealImg from '../../src/assets/images/summer-deal.jpeg';
-import baliImg from '../../src/assets/images/bali.jpeg';
-import santoriniImg from '../../src/assets/images/santorini.jpeg';
-import maldivesImg from '../../src/assets/images/maldives.jpg';
+import familyDealImg from '../assets/images/family-deal.jpeg';
+import newyorkImg from '../assets/images/new-york.jpeg';
+import veniceImg from '../assets/images/venice.jpeg';
+import capeTownImg from '../assets/images/cape-town.jpg';
 import DestinationCard from '../components/DestinationCard/DestinationCard';
 
-const summerDeals = [
+const getawayPlaces = [
     {
-        title: 'Bali, Indonesia',
-        image: baliImg,
-        price: 999,
-        description: 'Experience the magic of Bali with our exclusive summer offer!'
+        title: 'New York City, USA',
+        image: newyorkImg,
+        price: 1100,
+        description: 'The city that never sleeps, perfect for a quick urban adventure.'
     },
     {
-        title: 'Santorini, Greece',
-        image: santoriniImg,
-        price: 1199,
-        description: 'Enjoy breathtaking sunsets and whitewashed villages this summer.'
+        title: 'Venice, Italy',
+        image: veniceImg,
+        price: 950,
+        description: 'Romantic canals and stunning architecture for a memorable weekend.'
     },
     {
-        title: 'Maldives',
-        image: maldivesImg,
-        price: 1399,
-        description: 'Relax on pristine beaches and swim in crystal-clear waters.'
+        title: 'Cape Town, South Africa',
+        image: capeTownImg,
+        price: 1050,
+        description: 'Mountains, beaches, and vibrant culture in one quick getaway.'
     }
 ];
 
@@ -42,8 +42,8 @@ const heroSectionStyle = {
 };
 
 const heroImgStyle = {
-    width: '340px',
-    maxWidth: '90vw',
+    width: '260px',
+    maxWidth: '80vw',
     height: 'auto',
     borderRadius: '18px',
     boxShadow: '0 2px 8px rgba(67,198,172,0.08)',
@@ -79,17 +79,16 @@ const cardHoverStyle = {
     transform: 'scale(1.035)',
 };
 
-const SummerSpecial = () => {
+const WeekendGetawayDestinations = () => {
     const navigate = useNavigate();
     const [hoveredIdx, setHoveredIdx] = useState(-1);
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
     }, []);
 
-    const handleBookNow = (deal) => {
-        // Use the first word before comma, lowercased, as in Booking.jsx
-        const destinationName = deal.title.split(',')[0].toLowerCase().trim();
+    const handleBookNow = (place) => {
+        const destinationName = place.title.split(',')[0].toLowerCase().trim();
         navigate(`/book/${destinationName}`);
     };
 
@@ -98,29 +97,33 @@ const SummerSpecial = () => {
             {/* Hero Section: Image left, text right */}
             <div style={heroSectionStyle}>
                 <img
-                    src={summerDealImg}
-                    alt="Summer Special Banner"
+                    src={familyDealImg}
+                    alt="Weekend Getaway Banner"
                     style={heroImgStyle}
                 />
                 <div style={heroTextStyle}>
-                    <h1 style={{ fontSize: '2.5rem', marginBottom: '0.7rem', color: '#2c3e50', fontWeight: 700, letterSpacing: '1px' }}>Summer Special Deals</h1>
-                    <p style={{ fontSize: '1.2rem', color: '#333', maxWidth: '600px', marginBottom: 0 }}>
-                        Enjoy exclusive summer deals on your favorite destinations! Book now and save big on your next adventure.
+                    <h1 style={{ fontSize: '2.1rem', marginBottom: '0.5rem', color: '#2c3e50', fontWeight: 700, letterSpacing: '1px' }}>Weekend Getaway Destinations</h1>
+                    <p style={{ fontSize: '1.08rem', color: '#333', maxWidth: '600px', marginBottom: 0 }}>
+                        Escape for the weekend! Choose from these quick and exciting destinations for your next short break.
                     </p>
                 </div>
             </div>
             {/* Deals Cards Section */}
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem 3rem 1.5rem' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2.5rem', marginBottom: '2.5rem' }}>
-                    {summerDeals.map((deal, idx) => (
-                        <DestinationCard key={idx} destination={{ ...deal, rating: 4.7 }} buttonStyle={{
-                            background: 'linear-gradient(135deg, #43c6ac, #191654)',
-                            color: '#fff',
-                            width: 'auto',
-                            maxWidth: '180px',
-                            display: 'block',
-                            margin: '18px auto 0 auto',
-                        }} />
+                    {getawayPlaces.map((place, idx) => (
+                        <DestinationCard
+                            key={idx}
+                            destination={{ ...place, rating: 4.7 }}
+                            buttonStyle={{
+                                background: 'linear-gradient(135deg, #43c6ac, #191654)',
+                                color: '#fff',
+                                width: 'auto',
+                                maxWidth: '180px',
+                                display: 'block',
+                                margin: '18px auto 0 auto',
+                            }}
+                        />
                     ))}
                 </div>
             </div>
@@ -128,4 +131,4 @@ const SummerSpecial = () => {
     );
 };
 
-export default SummerSpecial; 
+export default WeekendGetawayDestinations; 

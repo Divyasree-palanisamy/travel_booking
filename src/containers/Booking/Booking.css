@@ -1,21 +1,38 @@
 .booking-page {
-    padding: 100px 20px;
+    padding: 100px 20px 40px;
     /* Add padding to account for fixed navbar */
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: 'Poppins', sans-serif;
     overflow-y: auto;
 }
 
+/* Add a blur effect to the background */
+.booking-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+/* Main container that holds all content */
 .booking-container {
+    position: relative;
+    /* To appear above the overlay */
     max-width: 1200px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    /* This container is now just a spacer */
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
     animation: fadeIn 0.5s ease-out;
 }
 
@@ -31,19 +48,34 @@
     }
 }
 
+/* Style for each major section as a card */
+.booking-header,
+.booking-details,
+.booking-form,
+.additional-info {
+    background: rgba(255, 255, 255, 0.85);
+    /* Semi-transparent card */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    /* Reduced space between cards */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .booking-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding: 20px;
-    background: linear-gradient(135deg, #2c3e50, #3498db);
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8));
     border-radius: 15px;
     color: white;
 }
 
 .booking-header h2 {
-    font-size: 2.8rem;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .booking-header p {
@@ -53,33 +85,25 @@
 
 .booking-details {
     display: flex;
-    gap: 40px;
-    margin-bottom: 40px;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(44, 62, 80, 0.03);
-    border: 1px solid rgba(44, 62, 80, 0.1);
-    transition: transform 0.3s ease;
+    gap: 30px;
 }
 
 .booking-image-container {
-    position: relative;
-    width: 400px;
-    height: 300px;
+    flex-basis: 40%;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .booking-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
-.booking-details:hover .booking-image {
-    transform: scale(1.1);
+.booking-image-container:hover .booking-image {
+    transform: scale(1.05);
 }
 
 .image-overlay {
@@ -103,17 +127,13 @@
 }
 
 .booking-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-basis: 60%;
 }
 
 .booking-info h3 {
-    color: #2c3e50;
     font-size: 2rem;
+    color: #2c3e50;
     margin-bottom: 15px;
-    font-weight: 600;
 }
 
 .booking-info p {
@@ -123,19 +143,21 @@
 }
 
 .booking-info .price {
-    font-size: 1.6rem;
-    color: #e74c3c;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin: 15px 0;
+    color: #3498db;
+    margin-bottom: 15px;
 }
 
 .booking-info .rating {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    font-size: 1.1rem;
+}
+
+.stars-container {
     color: #f1c40f;
-    font-size: 1.3rem;
-    font-weight: 600;
 }
 
 .booking-features {
@@ -214,122 +236,100 @@
     color: #2c3e50;
 }
 
+/* Give the booking form a distinct background */
 .booking-form {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    background: rgba(245, 247, 250, 0.9);
+    /* Lighter, slightly different background */
 }
 
 .form-section {
-    margin-bottom: 40px;
-    padding: 25px;
-    background: rgba(44, 62, 80, 0.02);
+    padding: 20px;
+    background: rgba(245, 247, 250, 0.8);
     border-radius: 12px;
-    border: 1px solid rgba(52, 152, 219, 0.2);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
 }
 
 .form-section h3 {
+    font-size: 1.5rem;
     color: #2c3e50;
-    font-size: 1.4rem;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid rgba(52, 152, 219, 0.2);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.form-group {
-    margin-bottom: 25px;
+/* Updated from .form-group to .input-group */
+.input-group {
+    margin-bottom: 20px;
 }
 
-.form-group label {
+.input-group label {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 10px;
     font-weight: 600;
-    color: #2c3e50;
+    color: #34495e;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.input-group label svg {
+    /* Target svg instead of i */
+    color: #3498db;
     font-size: 1.1rem;
 }
 
-.form-group label i {
-    color: #3498db;
-}
-
-.form-group input {
+.input-group input,
+.input-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
+    border: 1px solid #dcdde1;
     border-radius: 8px;
     font-size: 1rem;
-    transition: all 0.3s ease;
-    background-color: #f8f9fa;
     color: #2c3e50;
+    background-color: #ffffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+.input-group input:focus,
+.input-group textarea:focus {
     outline: none;
-    background-color: white;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-.form-group input::placeholder {
+.input-group input::placeholder,
+.input-group textarea::placeholder {
     color: #95a5a6;
 }
 
 /* Specific styling for number inputs */
-.form-group input[type="number"] {
+.input-group input[type="number"] {
     color: #2c3e50;
     font-weight: 500;
 }
 
-.form-group input[type="number"]::-webkit-inner-spin-button,
-.form-group input[type="number"]::-webkit-outer-spin-button {
+.input-group input[type="number"]::-webkit-inner-spin-button,
+.input-group input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
     height: 30px;
 }
 
 /* Specific styling for date inputs */
-.form-group input[type="date"] {
+.input-group input[type="date"] {
     color: #2c3e50;
     font-weight: 500;
 }
 
-.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0.7;
     cursor: pointer;
 }
 
-.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.input-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
-}
-
-.form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid #3498db;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background-color: #f8f9fa;
-    color: #2c3e50;
-    resize: vertical;
-    min-height: 120px;
-}
-
-.form-group textarea:focus {
-    border-color: #2980b9;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    outline: none;
-    background-color: white;
-}
-
-.form-group textarea::placeholder {
-    color: #95a5a6;
 }
 
 .form-row {
@@ -339,11 +339,9 @@
 }
 
 .price-summary {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    padding: 25px;
+    background: rgba(245, 247, 250, 0.9);
     border-radius: 12px;
-    margin: 30px 0;
-    border: 1px solid rgba(44, 62, 80, 0.1);
+    padding: 20px;
 }
 
 .price-summary h3 {
@@ -372,12 +370,9 @@
 }
 
 .price-row.total {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #e74c3c;
-    margin-top: 10px;
-    padding-top: 15px;
-    border-top: 2px solid rgba(44, 62, 80, 0.2);
 }
 
 .submit-booking-btn {
@@ -390,11 +385,12 @@
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .submit-booking-btn::before {
@@ -413,17 +409,19 @@
 }
 
 .submit-booking-btn:hover {
+    background: linear-gradient(135deg, #2980b9, #3498db);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .additional-info {
-    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     padding: 30px;
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(52, 152, 219, 0.2);
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .additional-info h3 {
@@ -488,37 +486,28 @@
 }
 
 .booking-description p {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    color: #555;
     line-height: 1.6;
-    color: #333;
-    max-width: 600px;
-    margin: 0;
-    font-style: italic;
-}
-
-.booking-info h3 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
+    margin-bottom: 15px;
 }
 
 .price {
     font-size: 1.5rem;
-    color: #2c3e50;
-    font-weight: 600;
-    margin: 1rem 0;
+    font-weight: 700;
+    color: #3498db;
+    margin-bottom: 15px;
 }
 
 .rating {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 8px;
+    font-size: 1.1rem;
 }
 
 .stars-container {
-    display: flex;
-    gap: 2px;
+    color: #f1c40f;
 }
 
 .star {
@@ -550,11 +539,7 @@
     font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-    .booking-container {
-        padding: 20px;
-    }
-
+@media (max-width: 992px) {
     .booking-details {
         flex-direction: column;
     }
@@ -583,4 +568,16 @@
     .additional-info h3 {
         font-size: 1.6rem;
     }
+}
+
+.input-group .info-card p {
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 400;
+    background: #fff;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 0;
+    box-sizing: border-box;
 }

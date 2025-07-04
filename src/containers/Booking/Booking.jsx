@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { FaStar, FaCalendarAlt, FaUser, FaChild, FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock, FaInfoCircle } from 'react-icons/fa';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { FaStar, FaCalendarAlt, FaUser, FaChild, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaClock, FaInfoCircle } from 'react-icons/fa';
 import CustomAlert from '../../components/CustomAlert/CustomAlert';
 import './Booking.css';
 
 const Booking = () => {
     const { destinationName } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
     const [destination, setDestination] = useState(null);
     const [loading, setLoading] = useState(true);
     const [showAlert, setShowAlert] = useState(false);
@@ -289,6 +290,10 @@ const Booking = () => {
         }
     ];
 
+    // List of Early Bird destinations (first word, lowercased)
+    const earlyBirdNames = ['paris', 'tokyo', 'bali'];
+    const isEarlyBird = earlyBirdNames.includes(destinationName.toLowerCase());
+
     useEffect(() => {
         // Find destination by first word of title
         const foundDestination = destinations.find(dest => {
@@ -323,14 +328,13 @@ const Booking = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Here you would typically send the booking data to your backend
-        console.log('Booking submitted:', { ...bookingInfo, destination });
+        // Show the CustomAlert modal instead of a toast
         setShowAlert(true);
     };
 
     const handleCloseAlert = () => {
         setShowAlert(false);
-        navigate('/');
+        navigate('/'); // Redirect after closing the modal
     };
 
     const renderStars = (rating) => {
@@ -357,12 +361,8 @@ const Booking = () => {
         return stars;
     };
 
-    if (loading) {
+    if (loading || !destination) {
         return <div className="loading">Loading...</div>;
-    }
-
-    if (!destination) {
-        return <div className="error">Destination not found</div>;
     }
 
     // Helper to create a slug from the title
@@ -370,17 +370,30 @@ const Booking = () => {
 
     return (
         <div className="booking-page">
-            {showAlert && (
-                <CustomAlert
-                    message={`Your booking for ${destination.title} has been confirmed! We'll send the details to ${bookingInfo.email}.`}
-                    onClose={handleCloseAlert}
-                    type="success"
-                />
-            )}
             <div className="booking-container">
                 <div className="booking-header">
                     <h2>Book Your Dream Vacation</h2>
                     <p>Complete your booking details below</p>
+                    <button
+                        type="button"
+                        style={{
+                            margin: '18px 0 0 0',
+                            padding: '8px 18px',
+                            borderRadius: '8px',
+                            background: 'linear-gradient(135deg, #43c6ac, #191654)',
+                            color: '#fff',
+                            border: 'none',
+                            fontWeight: 'bold',
+                            fontSize: '1rem',
+                            cursor: 'pointer',
+                            boxShadow: '0 2px 8px rgba(44,62,80,0.10)',
+                            transition: 'background 0.2s, transform 0.2s',
+                            display: 'inline-block',
+                        }}
+                        onClick={() => navigate(-1)}
+                    >
+                        ← Back
+                    </button>
                 </div>
 
                 <div className="booking-details">
@@ -420,123 +433,69 @@ const Booking = () => {
                 </div>
 
                 <div className="booking-form">
-                    <form onSubmit={handleSubmit}>
+                    <form className="booking-form" onSubmit={handleSubmit}>
                         <div className="form-section">
                             <h3><FaUser /> Personal Information</h3>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label><FaUser /> Full Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={bookingInfo.name}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label><FaEnvelope /> Email</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={bookingInfo.email}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </div>
+                            <div className="input-group">
+                                <label htmlFor="name"><FaUser /> Full Name</label>
+                                <input type="text" id="name" name="name" value={bookingInfo.name} onChange={handleInputChange} required />
                             </div>
-                            <div className="form-group">
-                                <label><FaPhone /> Phone Number</label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    value={bookingInfo.phone}
-                                    onChange={handleInputChange}
-                                    required
-                                />
+                            <div className="input-group">
+                                <label htmlFor="email"><FaEnvelope /> Email Address</label>
+                                <input type="email" id="email" name="email" value={bookingInfo.email} onChange={handleInputChange} required />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="phone"><FaPhoneAlt /> Phone Number</label>
+                                <input type="tel" id="phone" name="phone" value={bookingInfo.phone} onChange={handleInputChange} />
                             </div>
                         </div>
 
                         <div className="form-section">
                             <h3><FaCalendarAlt /> Trip Details</h3>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label><FaUser /> Number of Adults</label>
-                                    <input
-                                        type="number"
-                                        name="adults"
-                                        min="1"
-                                        value={bookingInfo.adults}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label><FaChild /> Number of Children</label>
-                                    <input
-                                        type="number"
-                                        name="children"
-                                        min="0"
-                                        value={bookingInfo.children}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </div>
+                            <div className="input-group">
+                                <label htmlFor="adults"><FaUser /> Number of Adults</label>
+                                <input type="number" id="adults" name="adults" min="1" value={bookingInfo.adults} onChange={handleInputChange} required />
                             </div>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label><FaCalendarAlt /> Check-in Date</label>
-                                    <input
-                                        type="date"
-                                        name="checkIn"
-                                        value={bookingInfo.checkIn}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label><FaCalendarAlt /> Check-out Date</label>
-                                    <input
-                                        type="date"
-                                        name="checkOut"
-                                        value={bookingInfo.checkOut}
-                                        onChange={handleInputChange}
-                                        required
-                                    />
-                                </div>
+                            <div className="input-group">
+                                <label htmlFor="children"><FaChild /> Number of Children</label>
+                                <input type="number" id="children" name="children" min="0" value={bookingInfo.children} onChange={handleInputChange} required />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="checkIn"><FaCalendarAlt /> Check-in Date</label>
+                                <input type="date" id="checkIn" name="checkIn" value={bookingInfo.checkIn} onChange={handleInputChange} required />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="checkOut"><FaCalendarAlt /> Check-out Date</label>
+                                <input type="date" id="checkOut" name="checkOut" value={bookingInfo.checkOut} onChange={handleInputChange} required />
                             </div>
                         </div>
 
                         <div className="form-section">
                             <h3><FaInfoCircle /> Additional Information</h3>
-                            <div className="form-group">
-                                <label>Special Requests</label>
-                                <textarea
-                                    name="specialRequests"
-                                    value={bookingInfo.specialRequests}
-                                    onChange={handleInputChange}
-                                    rows="4"
-                                    placeholder="Any special requests or requirements?"
-                                />
+                            <div className="input-group">
+                                <label htmlFor="specialRequests">Special Requests</label>
+                                <textarea id="specialRequests" name="specialRequests" rows="4" value={bookingInfo.specialRequests} onChange={handleInputChange} placeholder="Any special requests or requirements?" />
                             </div>
                         </div>
 
-                        <div className="price-summary">
+                        <div className="form-section">
                             <h3>Price Summary</h3>
-                            <div className="price-details">
-                                <div className="price-row">
-                                    <span>Adults ({bookingInfo.adults})</span>
-                                    <span>${destination.price * bookingInfo.adults}</span>
-                                </div>
-                                {bookingInfo.children > 0 && (
+                            <div className="input-group">
+                                <div className="price-details">
                                     <div className="price-row">
-                                        <span>Children ({bookingInfo.children})</span>
-                                        <span>${(destination.price * 0.7) * bookingInfo.children}</span>
+                                        <span>Adults ({bookingInfo.adults})</span>
+                                        <span>${destination.price * bookingInfo.adults}</span>
                                     </div>
-                                )}
-                                <div className="price-row total">
-                                    <span>Total</span>
-                                    <span>${calculateTotal()}</span>
+                                    {bookingInfo.children > 0 && (
+                                        <div className="price-row">
+                                            <span>Children ({bookingInfo.children})</span>
+                                            <span>${(destination.price * 0.7) * bookingInfo.children}</span>
+                                        </div>
+                                    )}
+                                    <div className="price-row total">
+                                        <span>Total</span>
+                                        <span>${calculateTotal()}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -551,16 +510,25 @@ const Booking = () => {
                     <h3>Trip Highlights</h3>
                     <div className="info-grid">
                         {destination.highlights.map((highlight, index) => (
-                            <div key={index} className="info-card">
-                                <h4>Highlight {index + 1}</h4>
-                                <p>{highlight}</p>
+                            <div key={index} className="input-group">
+                                <div className="info-card">
+                                    <h4>Highlight {index + 1}</h4>
+                                    <p>{highlight}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+            {showAlert && (
+                <CustomAlert
+                    message={`Your booking for ${destination.title} has been confirmed! Payment process details will be sent to your email: ${bookingInfo.email}.`}
+                    onClose={handleCloseAlert}
+                    type="success"
+                />
+            )}
         </div>
     );
 };
 
-export default Booking; 
+export default Booking;  

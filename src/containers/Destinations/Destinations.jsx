@@ -144,7 +144,18 @@ const Destinations = () => {
         </div>
         <div className="destinations-grid">
           {displayedDestinations.map((destination) => (
-            <DestinationCard key={destination.id} destination={destination} />
+            <DestinationCard
+              key={destination.id}
+              destination={destination}
+              buttonStyle={{
+                background: 'linear-gradient(135deg, #43c6ac, #191654)',
+                color: '#fff',
+                width: 'auto',
+                maxWidth: '180px',
+                display: 'block',
+                margin: '18px auto 0 auto',
+              }}
+            />
           ))}
         </div>
         <div className="view-more-container">
